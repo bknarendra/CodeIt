@@ -40,13 +40,13 @@ while(true)
 {
 	if(strcmp($testArray['error'],'OK')==0&&strcmp($testArray['status'],'0')==0)
 	{
-		$subdet=$client->getSubmissionDetails("geniush", "geniush159zxc",substr($locn,1),true,true,true,true,true);
+		$subdet=$client->getSubmissionDetails("your ideone username","your ideone password",substr($locn,1),true,true,true,true,true);
 		break;
 	}
 	else
 	{
 		sleep(1);
-		$testArray=$client->getSubmissionStatus("geniush", "geniush159zxc",substr($locn,1));
+		$testArray=$client->getSubmissionStatus("your ideone username","your ideone password",substr($locn,1));
 	}
 }
 switch($subdet['result'])
