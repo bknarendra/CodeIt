@@ -22,7 +22,7 @@ if (get_magic_quotes_gpc()) {
     }
     unset($process);
 }
-$con = mysql_connect('localhost','p170r760_getsms','virendra');
+$con = mysql_connect('localhost','','');
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
