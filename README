@@ -1,0 +1,8 @@
+Sourcecode for codeit.teckzone.in
+It uses the ideone api.
+This application is still under development.
+I have other features to add to it like:
+1) Autocomplete for function names
+2) Shared function library
+3) Improve the user interface using bootstrap
+This is my first project in php.

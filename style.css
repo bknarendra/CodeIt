@@ -1,0 +1,45 @@
+.myButton {
+	-moz-box-shadow:inset 0px 1px 3px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #caefab;
+	box-shadow:inset 0px 1px 3px 0px #caefab;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+	background-color:#77d42a;
+	-moz-border-radius:17px;
+	-webkit-border-radius:17px;
+	border-radius:17px;
+	border:3px solid #268a16;
+	display:inline-block;
+	color:#306108;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	padding:2px 25px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #aade7c;
+}.myButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+	background-color:#5cb811;
+}.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.box {
+border-radius: 5px;
+-webkit-box-shadow: 2px 5px 12px #555;
+padding: 10px;
+width: 95%;
+background-color: white;
+color: black;
+font-size: 10pt;
+line-height: 18px;
+margin: auto;
+padding: 5px;
+opacity:.95;
+filter: alpha(opacity=95);
+filter: "alpha(opacity=95)";
+}

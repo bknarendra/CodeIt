@@ -1,0 +1,25 @@
+
+RewriteEngine on
+
+# -FrontPage-
+
+maintenance.htmlIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName teckzone.in
+AuthUserFile /home/p170r760/public_html/_vti_pvt/service.pwd
+AuthGroupFile /home/p170r760/public_html/_vti_pvt/service.grp
+
+RewriteCond %{HTTP_HOST} ^teckzone\.in$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.teckzone\.in$
+RewriteRule ^/?$ "http\:\/\/teckzone\.in\maintenance.html" [R=301,L]
+php_flag magic_quotes_gpc Off
+

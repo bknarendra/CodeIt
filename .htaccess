@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^codeit\.teckzone\.in$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.codeit\.teckzone\.in$
+RewriteRule ^/?$ "http\:\/\/codeit\.teckzone\.in\/code\.html" [R=301,L]
+

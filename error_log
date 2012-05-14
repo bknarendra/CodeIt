@@ -1,0 +1,39 @@
+[09-Jan-2012 10:07:29] PHP Fatal error:  Uncaught SoapFault exception: [HTTP] Error Fetching http headers in /home/p170r760/public_html/codeit/result.php:49
+Stack trace:
+#0 [internal function]: SoapClient->__doRequest('<?xml version="...', 'http://ideone.c...', 'http://ideone.c...', 1, 0)
+#1 /home/p170r760/public_html/codeit/result.php(49): SoapClient->__call('getSubmissionSt...', Array)
+#2 /home/p170r760/public_html/codeit/result.php(49): SoapClient->getSubmissionStatus('geniush', 'geniush159zxc', 'rray')
+#3 {main}
+  thrown in /home/p170r760/public_html/codeit/result.php on line 49
+[13-Jan-2012 11:18:04] PHP Fatal error:  Uncaught SoapFault exception: [SOAP-ENV:Server] SOAP-ERROR: Encoding: string 'import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Hello {
+
+	/**
+	 * @param args
+	 */
+	
+	public static void main(String[] args) throws IOException {
+	    System.out.println("Game Started!!!");
+	    PrintField();
+	    while (CheckGame() == ' ' && CanMove()) {
+	        HumanMove();
+	        CompMove();
+	        PrintField();
+	    }
+	    if (CheckGame() == 'X') {
+	        System.out.println("YOU WIN!");
+	    }
+	    if (CheckGame() == '0') {
+	        System.out.println("YOU LOSE!");
+	    }
+	    if (CheckGame() == ' ' && !CanMove()) {
+	        System.out.println("STANDOFF!");
+	    }
+	}
+	// \xc8...' is not a valid utf-8 string in /home/p170r760/public_html/codeit/result.php:43
+Stack trace:
+#0 /home/p170r760/public_html/codeit/result.php(43): SoapClient->__call('getSubmissionDe...', Array)
+#1 /home/p170r760/public_html/codeit/result.php(43): SoapClient->getSubmissionDetails('geniush', in /home/p170r760/public_html/codeit/result.php on line 43

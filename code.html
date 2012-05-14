@@ -1,0 +1,191 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <meta property="og:title" content="CodeIt: An Online IDE"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://codeit.teckzone.in/"/>
+    <meta property="og:image" content="http://codeit.teckzone.in/my_Logo.JPG"/>
+    <meta property="og:site_name" content="TeckZone"/>
+    <meta property="fb:admins" content="100000109274242"/>
+    <meta property="og:description"
+          content="This is an online IDE which supports 16 languages. You can compile and run your programs using it."/>
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/javascript/javascript.js"></script>
+    <script src="mode/clike/clike.js"></script>
+	<script src="mode/clojure/clojure.js"></script>
+	<script src="mode/groovy/groovy.js"></script>
+	<script src="mode/haskell/haskell.js"></script>
+	<script src="mode/lua/lua.js"></script>
+	<script src="mode/pascal/pascal.js"></script>
+	<script src="mode/perl/perl.js"></script>
+	<script src="mode/php/php.js"></script>
+	<script src="mode/python/python.js"></script>
+	<script src="mode/r/r.js"></script>
+	<script src="mode/ruby/ruby.js"></script>
+	<script src="mode/scheme/scheme.js"></script>
+	<script src="mode/smalltalk/smalltalk.js"></script>
+	<link rel="stylesheet" href="theme/neat.css">
+    <link rel="stylesheet" href="theme/elegant.css">
+    <link rel="stylesheet" href="theme/night.css">
+    <link rel="stylesheet" href="theme/monokai.css">
+    <link rel="stylesheet" href="theme/cobalt.css">
+    <link rel="stylesheet" href="theme/eclipse.css">
+    <link rel="stylesheet" href="theme/rubyblue.css">
+    <link rel="stylesheet" href="theme/docs.css">
+	<script src="lib/util/dialog.js"></script>
+    <link rel="stylesheet" href="lib/util/dialog.css">
+    <script src="lib/util/searchcursor.js"></script>
+    <script src="lib/util/search.js"></script>
+    <style type="text/css">
+		.CodeMirror {border-top: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black; border-left:2px solid black;}
+		.activeline {background: #f0fcff !important;}
+    .style1 {
+	font-family: Tahoma;
+	font-size: 14px;
+}
+    .style2 {
+	font-family: Tahoma;
+	font-size: 10pt;
+}
+    </style>
+	<title>CodeIt</title>
+</head>
+<body background="back.JPG">
+<div><img src="my_Logo.JPG" /></div>
+<div class="fb-like" data-href="http://www.facebook.com/pages/CodeIt/161122680657874" data-send="true" data-width="450" data-show-faces="false"></div>
+<div class="box">
+<form enctype="multipart/form-data" action="process.php" method="post">
+    <textarea id="code" name="file">Enter your code here</textarea>
+	<br>
+  <table>
+    <tr>
+      <td width="150" valign="top">
+        <p>Select language:<br>
+            <select name="lang" id="lang" size="12" onChange="update(this)">
+              <option  value="11" selected>C</option>
+              <option value="1">C++</option>
+              <option value="10">Java</option>
+              <option value="121">Groovy</option>
+              <option value="111">Clojure</option>
+              <option value="21">Haskell</option>
+              <option value="35">Javascript</option>
+              <option value="26">Lua</option>
+              <option value="22">Pascal</option>
+              <option value="3">Perl</option>
+              <option value="29">PHP</option>
+              <option value="116">Python</option>
+              <option value="117">R</option>
+              <option value="17">Ruby</option>
+              <option value="33">Scheme</option>
+              <option value="23">Smalltalk</option>
+            </select>
+        </p></td>
+		<input type="hidden" name="run" id="run" value="1">
+		<input type="hidden" name="private" id="private" value="1">
+		<input type="hidden" name="public" id="public" value="0">
+      <td align="left" valign="top"><label for="input">Enter your input (stdin)</label>
+        <br><br>
+        <textarea style="border:2px solid black;" name="input" id="input" rows="13" cols="70"></textarea>
+        <br></td>
+		<td align="left" valign="top"><p>Select theme:<br><br><select onChange="selectTheme(this)">
+    <option selected>default</option>
+    <option>night</option>
+    <option>monokai</option>
+    <option>neat</option>
+    <option>elegant</option>
+    <option>cobalt</option>
+    <option>eclipse</option>
+    <option>rubyblue</option>
+</select>
+</p></td>
+    </tr>
+  </table>
+  <label for="input"></label>
+  <input type="submit" name="Submit" id="submit_button" value="submit" class="myButton" onsubmit="javascript:document.getElementById('submit_button').disabled=true;">
+</form>
+<p>&nbsp;</p> 
+
+  <div align="left">
+    
+    <p align="center">
+      <script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    mode: "text/x-csrc",
+    lineNumbers: true,
+    matchBrackets: true,
+    tabMode: "indent",
+    onCursorActivity: function() {
+    editor.setLineClass(hlLine, null);
+    hlLine=editor.setLineClass(editor.getCursor().line, "activeline");
+  }
+  });
+  var hlLine=editor.setLineClass(0, "activeline");
+  function selectTheme(node) {
+    var theme=node.options[node.selectedIndex].innerHTML;
+    editor.setOption("theme", theme);
+  }
+  function update(node) {
+  	var lang=node.options[node.selectedIndex].innerHTML;
+	var langset;
+  	switch(lang)
+	{
+		case 'C':langset="text/x-csrc";break;
+		case 'C++':langset="text/x-c++src";break;
+		case 'Java':langset="text/x-java";break;
+		case 'Groovy':langset="text/x-groovy";break;
+		case 'Clojure':langset="text/x-clojure";break;
+		case 'Haskell':langset="text/x-haskell";break;
+		case 'Javascript':langset="text/javascript";break;
+		case 'Lua':langset="text/x-lua";break;
+		case 'Pascal':langset="text/x-pascal";break;
+		case 'Perl':langset="text/x-perl";break;
+		case 'PHP':langset="application/x-httpd-php";break;
+		case 'Python':langset="text/x-python";break;
+		case 'R':langset="text/x-rsrc";break;
+		case 'Ruby':langset="text/x-ruby";break;
+		case 'Scheme':langset="text/x-scheme";break;
+		case 'Smalltalk':langset="text/x-stsrc";break;
+	}
+    editor.setOption("mode",langset);
+  }
+      </script>
+    </p>
+    <h2>Important Note:Select the language from the dialog box alongside to set the language in which you want to code. </h2>
+    <p align="center"><br>
+      &nbsp;<span class="style1"><a href="Aboutus.html">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="comments.html">Suggestions</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="code.html">Home</a></span></p>
+    <p align="center" class="style2">Created By Narendra Rajput </p>
+    <p align="center"><span class="style1"><br>
+	CodeIt uses <a href="http://ideone.com">Ideone API</a> &copy;
+by <a href="http://sphere-research.com">Sphere Research Labs</a>
+      </span></p>
+  </div>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=7549843; 
+var sc_invisible=1; 
+var sc_security="edc8c3c5"; 
+</script>
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script>
+<noscript><div class="statcounter"><a title="counter on
+tumblr" href="http://statcounter.com/tumblr/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/7549843/0/edc8c3c5/1/"
+alt="counter on tumblr"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+ <div id="fb-root">
+ <script src='http://connect.facebook.net/en_US/all.js'></script>
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=204674169621376";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
