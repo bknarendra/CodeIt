@@ -35,7 +35,7 @@ curl_close($ch);
 $i=strpos($exec,"<!-- source code -->");
 $code=substr($exec,$i,(strpos($exec,"</table></pre>",$i+20)-$i)+15);
 $client=new SoapClient("http://ideone.com/api/1/service.wsdl");
-$testArray = $client->getSubmissionStatus("geniush", "geniush159zxc",substr($locn,1));
+$testArray = $client->getSubmissionStatus("your ideone username","your ideone password",substr($locn,1));
 while(true)
 {
 	if(strcmp($testArray['error'],'OK')==0&&strcmp($testArray['status'],'0')==0)
